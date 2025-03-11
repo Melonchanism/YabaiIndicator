@@ -7,19 +7,12 @@
 
 import SwiftUI
 
-@main
-struct YabaiIndicatorApp: App {
-    @NSApplicationDelegateAdaptor(YabaiAppDelegate.self) var appDelegate
-    
-    
-    init() {
-        // Customize delegate here.
-    }
-    
-    var body: some Scene {
-        Settings {
-            SettingsView()
-        }
-
-    }
+@main struct YabaiIndicatorApp: App {
+	@NSApplicationDelegateAdaptor(YabaiIndicatorAppDelegate.self) var delegate
+	
+	var body: some Scene {
+		Settings {
+			SettingsView()
+		}
+	}
 }

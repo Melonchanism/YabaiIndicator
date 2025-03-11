@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0358C51B2D7E9DC700C73795 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0358C51A2D7E9DC400C73795 /* Defaults.swift */; };
+		0358C51D2D7E9F5900C73795 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 0358C51C2D7E9F5900C73795 /* Defaults */; };
 		500F41362780826500C6BC9B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500F41352780826500C6BC9B /* SettingsView.swift */; };
 		5051A4692780C02700614C85 /* YabaiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5051A4682780C02700614C85 /* YabaiClient.swift */; };
 		5051A46B2780DC9B00614C85 /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5051A46A2780DC9B00614C85 /* defaults.plist */; };
@@ -17,7 +19,7 @@
 		5061207E2779212300E8F192 /* YabaiIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061207D2779212300E8F192 /* YabaiIndicatorTests.swift */; };
 		506120882779212300E8F192 /* YabaiIndicatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120872779212300E8F192 /* YabaiIndicatorUITests.swift */; };
 		5061208A2779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120892779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift */; };
-		506120982779239B00E8F192 /* YabaiAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120972779239B00E8F192 /* YabaiAppDelegate.swift */; };
+		506120982779239B00E8F192 /* YabaiIndicatorAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */; };
 		5061209B277929A300E8F192 /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5061209A277929A200E8F192 /* SkyLight.framework */; };
 		506120A4277A1A6F00E8F192 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506120A2277A1A6C00E8F192 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		506120A8277A1A8800E8F192 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506120A6277A1A8500E8F192 /* CoreServices.framework */; platformFilter = maccatalyst; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0358C51A2D7E9DC400C73795 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		500F41352780826500C6BC9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5051A4682780C02700614C85 /* YabaiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiClient.swift; sourceTree = "<group>"; };
 		5051A46A2780DC9B00614C85 /* defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
@@ -64,7 +67,7 @@
 		506120872779212300E8F192 /* YabaiIndicatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorUITests.swift; sourceTree = "<group>"; };
 		506120892779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		506120962779231000E8F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		506120972779239B00E8F192 /* YabaiAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiAppDelegate.swift; sourceTree = "<group>"; };
+		506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorAppDelegate.swift; sourceTree = "<group>"; };
 		5061209A277929A200E8F192 /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
 		5061209E277A13C600E8F192 /* SkyLightConnector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyLightConnector.h; sourceTree = "<group>"; };
 		5061209F277A195C00E8F192 /* YabaiIndicator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YabaiIndicator-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0358C51D2D7E9F5900C73795 /* Defaults in Frameworks */,
 				506120B4277B44B200E8F192 /* Socket in Frameworks */,
 				506120AC277A1A9500E8F192 /* Cocoa.framework in Frameworks */,
 				506120A4277A1A6F00E8F192 /* CoreGraphics.framework in Frameworks */,
@@ -143,10 +147,11 @@
 				5061206B2779212000E8F192 /* YabaiIndicatorApp.swift */,
 				5061206D2779212000E8F192 /* ContentView.swift */,
 				50DF24C6277BD18700DF1906 /* ImageGenerator.swift */,
+				0358C51A2D7E9DC400C73795 /* Defaults.swift */,
 				5061206F2779212200E8F192 /* Assets.xcassets */,
 				506120742779212200E8F192 /* YabaiIndicator.entitlements */,
 				506120712779212200E8F192 /* Preview Content */,
-				506120972779239B00E8F192 /* YabaiAppDelegate.swift */,
+				506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */,
 				5061209E277A13C600E8F192 /* SkyLightConnector.h */,
 				5086FE7D2782006C00E51F61 /* SocketClient.h */,
 				5086FE7E2782006C00E51F61 /* SocketClient.c */,
@@ -229,6 +234,7 @@
 			name = YabaiIndicator;
 			packageProductDependencies = (
 				506120B3277B44B200E8F192 /* Socket */,
+				0358C51C2D7E9F5900C73795 /* Defaults */,
 			);
 			productName = YabaiIndicator;
 			productReference = 506120682779212000E8F192 /* YabaiIndicator.app */;
@@ -305,6 +311,7 @@
 			mainGroup = 5061205F2779212000E8F192;
 			packageReferences = (
 				506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */,
+				0358C5192D7E9DBB00C73795 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 506120692779212000E8F192 /* Products */;
 			projectDirPath = "";
@@ -353,11 +360,12 @@
 				5086FE87278303EE00E51F61 /* NativeClient.swift in Sources */,
 				50DF24C7277BD18700DF1906 /* ImageGenerator.swift in Sources */,
 				5086FE892783598E00E51F61 /* SpaceType.swift in Sources */,
-				506120982779239B00E8F192 /* YabaiAppDelegate.swift in Sources */,
+				506120982779239B00E8F192 /* YabaiIndicatorAppDelegate.swift in Sources */,
 				500F41362780826500C6BC9B /* SettingsView.swift in Sources */,
 				5061206E2779212000E8F192 /* ContentView.swift in Sources */,
 				5061206C2779212000E8F192 /* YabaiIndicatorApp.swift in Sources */,
 				5086FE842783026C00E51F61 /* ButtonStyle.swift in Sources */,
+				0358C51B2D7E9DC700C73795 /* Defaults.swift in Sources */,
 				5051A4692780C02700614C85 /* YabaiClient.swift in Sources */,
 				5086FE7F2782006D00E51F61 /* SocketClient.c in Sources */,
 			);
@@ -518,22 +526,25 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YabaiIndicator/YabaiIndicator.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YabaiIndicator/Preview Content\"";
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
+				DEVELOPMENT_TEAM = MP26D4WTMR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YabaiIndicator/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicator;
+				PRODUCT_BUNDLE_IDENTIFIER = melon.YabaiIndicator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "YabaiIndicator/YabaiIndicator-Bridging-Header.h";
@@ -553,22 +564,25 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YabaiIndicator/YabaiIndicator.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YabaiIndicator/Preview Content\"";
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
+				DEVELOPMENT_TEAM = MP26D4WTMR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YabaiIndicator/Info.plist;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.3.4;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicator;
+				PRODUCT_BUNDLE_IDENTIFIER = melon.YabaiIndicator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "YabaiIndicator/YabaiIndicator-Bridging-Header.h";
@@ -694,6 +708,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0358C5192D7E9DBB00C73795 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.2;
+			};
+		};
 		506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Kitura/BlueSocket.git";
@@ -705,6 +727,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0358C51C2D7E9F5900C73795 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0358C5192D7E9DBB00C73795 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		506120B3277B44B200E8F192 /* Socket */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */;

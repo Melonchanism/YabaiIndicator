@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Defaults
 
 @objc
-enum ButtonStyle : Int, Identifiable, CaseIterable {
+enum ButtonStyle : Int, Identifiable, CaseIterable, Defaults.Serializable {
     case numeric
     case windows
     
