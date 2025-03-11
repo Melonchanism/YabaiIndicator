@@ -16,9 +16,6 @@
 		5061206E2779212000E8F192 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061206D2779212000E8F192 /* ContentView.swift */; };
 		506120702779212200E8F192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5061206F2779212200E8F192 /* Assets.xcassets */; };
 		506120732779212200E8F192 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 506120722779212200E8F192 /* Preview Assets.xcassets */; };
-		5061207E2779212300E8F192 /* YabaiIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061207D2779212300E8F192 /* YabaiIndicatorTests.swift */; };
-		506120882779212300E8F192 /* YabaiIndicatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120872779212300E8F192 /* YabaiIndicatorUITests.swift */; };
-		5061208A2779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120892779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift */; };
 		506120982779239B00E8F192 /* YabaiIndicatorAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */; };
 		5061209B277929A300E8F192 /* SkyLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5061209A277929A200E8F192 /* SkyLight.framework */; };
 		506120A4277A1A6F00E8F192 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506120A2277A1A6C00E8F192 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
@@ -62,10 +59,7 @@
 		506120722779212200E8F192 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		506120742779212200E8F192 /* YabaiIndicator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YabaiIndicator.entitlements; sourceTree = "<group>"; };
 		506120792779212200E8F192 /* YabaiIndicatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YabaiIndicatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5061207D2779212300E8F192 /* YabaiIndicatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorTests.swift; sourceTree = "<group>"; };
 		506120832779212300E8F192 /* YabaiIndicatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YabaiIndicatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		506120872779212300E8F192 /* YabaiIndicatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorUITests.swift; sourceTree = "<group>"; };
-		506120892779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		506120962779231000E8F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorAppDelegate.swift; sourceTree = "<group>"; };
 		5061209A277929A200E8F192 /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
@@ -120,8 +114,6 @@
 			children = (
 				506120B0277A8F5200E8F192 /* README.md */,
 				5061206A2779212000E8F192 /* YabaiIndicator */,
-				5061207C2779212200E8F192 /* YabaiIndicatorTests */,
-				506120862779212300E8F192 /* YabaiIndicatorUITests */,
 				506120692779212000E8F192 /* Products */,
 				50612099277929A200E8F192 /* Frameworks */,
 			);
@@ -167,23 +159,6 @@
 				506120722779212200E8F192 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		5061207C2779212200E8F192 /* YabaiIndicatorTests */ = {
-			isa = PBXGroup;
-			children = (
-				5061207D2779212300E8F192 /* YabaiIndicatorTests.swift */,
-			);
-			path = YabaiIndicatorTests;
-			sourceTree = "<group>";
-		};
-		506120862779212300E8F192 /* YabaiIndicatorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				506120872779212300E8F192 /* YabaiIndicatorUITests.swift */,
-				506120892779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift */,
-			);
-			path = YabaiIndicatorUITests;
 			sourceTree = "<group>";
 		};
 		50612099277929A200E8F192 /* Frameworks */ = {
@@ -375,7 +350,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5061207E2779212300E8F192 /* YabaiIndicatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,8 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				506120882779212300E8F192 /* YabaiIndicatorUITests.swift in Sources */,
-				5061208A2779212300E8F192 /* YabaiIndicatorUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +569,6 @@
 		506120912779212300E8F192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -616,7 +587,6 @@
 		506120922779212300E8F192 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -635,7 +605,6 @@
 		506120942779212300E8F192 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3UD8QX5G4;
@@ -652,7 +621,6 @@
 		506120952779212300E8F192 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3UD8QX5G4;
