@@ -9,27 +9,6 @@ import SwiftUI
 import Carbon.HIToolbox
 import Defaults
 
-struct WindowSpaceButton : View {
-	var space: Space
-	var windows: [Window]
-	var displays: [Display]
-	
-	var body : some View {
-		switch space.type {
-			case .standard:
-				Image(nsImage: generateImage(active: space.active, visible: space.visible, windows: windows, display: displays[space.display-1])).onTapGesture {
-					switchSpace(space)
-				}.frame(width:20, height: 16)
-			case .fullscreen:
-				Image(nsImage: generateImage(symbol: "F" as NSString, active: space.active, visible: space.visible)).onTapGesture {
-					switchSpace(space)
-				}
-			case .divider:
-				Divider().background(Color(.systemGray)).frame(height: 14)
-		}
-	}
-}
-
 struct ContentView: View {
 	@EnvironmentObject var appDelegate: YabaiIndicatorAppDelegate
 	@EnvironmentObject var spaceModel: SpaceModel
@@ -64,13 +43,23 @@ struct ContentView: View {
 						RoundedRectangle(cornerRadius: 3)
 							.fill(space.active ? Color.primary : space.visible ? Color.secondary : .clear)
 							.stroke(.primary)
-						Text("\(space.index != 0 ? String(space.index) : "F")")
-							.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
+						if space.type != .fullscreen {
+							if buttonStyle == .numeric {
+								Text("\(space.index)")
+									.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
+							} else {
+								Image(nsImage: generateImage(windows: spaceModel.windows.filter { $0.spaceIndex == space.yabaiIndex }, display: spaceModel.displays[space.display-1]))
+								.resizable()
+								.frame(width:18, height: 14)
+								.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
+							}
+						} else {
+							Text("F")
+						}
 					}
 					.frame(width:20, height: 16)
 					.onTapGesture { switchSpace(space) }
 				}
-//					WindowSpaceButton(space: space, windows: spaceModel.windows.filter{$0.spaceIndex == space.yabaiIndex}, displays: spaceModel.displays)
 			}
 		}
 		.overlay {
