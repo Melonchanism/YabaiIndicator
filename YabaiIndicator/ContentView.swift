@@ -40,9 +40,15 @@ struct ContentView: View {
 					Divider().background(Color(.systemGray)).frame(height: 14)
 				} else {
 					ZStack {
-						RoundedRectangle(cornerRadius: 3)
-							.fill(space.active ? Color.primary : space.visible ? Color.secondary : .clear)
-							.stroke(.primary)
+						if #available(macOS 14, *) {
+							RoundedRectangle(cornerRadius: 3)
+								.fill(space.active ? Color.primary : space.visible ? Color.secondary : .clear)
+								.stroke(.primary)
+						} else {
+							(space.active ? Color.primary : space.visible ? Color.secondary : Color.clear)
+								.border(.primary)
+								.cornerRadius(3)
+						}
 						if space.type != .fullscreen {
 							if buttonStyle == .numeric {
 								Text("\(space.index)")
@@ -50,14 +56,14 @@ struct ContentView: View {
 							} else {
 								Image(nsImage: generateImage(windows: spaceModel.windows.filter { $0.spaceIndex == space.yabaiIndex }, display: spaceModel.displays[space.display-1]))
 								.resizable()
-								.frame(width:18, height: 14)
+								.frame(width:18, height: 13)
 								.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
 							}
 						} else {
 							Text("F")
 						}
 					}
-					.frame(width:20, height: 16)
+					.frame(width:20, height: 15)
 					.onTapGesture { switchSpace(space) }
 				}
 			}
@@ -66,7 +72,7 @@ struct ContentView: View {
 			GeometryReader { geometry in
 				EmptyView()
 					.frame(maxWidth: .infinity)
-					.onChange(of: generateSpaces()) {
+					.onChange(of: generateSpaces()) { _ in
 						appDelegate.statusBarItem?.button?.frame.size.width = geometry.size.width + 20
 						appDelegate.statusBarItem?.button?.subviews[0].frame.size.width = geometry.size.width + 20
 					}

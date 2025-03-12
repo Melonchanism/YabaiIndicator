@@ -30,23 +30,6 @@
 		50DF24C7277BD18700DF1906 /* ImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF24C6277BD18700DF1906 /* ImageGenerator.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5061207A2779212200E8F192 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 506120602779212000E8F192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 506120672779212000E8F192;
-			remoteInfo = YabaiIndicator;
-		};
-		506120842779212300E8F192 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 506120602779212000E8F192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 506120672779212000E8F192;
-			remoteInfo = YabaiIndicator;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0358C51A2D7E9DC400C73795 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		500F41352780826500C6BC9B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -58,8 +41,6 @@
 		5061206F2779212200E8F192 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		506120722779212200E8F192 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		506120742779212200E8F192 /* YabaiIndicator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YabaiIndicator.entitlements; sourceTree = "<group>"; };
-		506120792779212200E8F192 /* YabaiIndicatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YabaiIndicatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		506120832779212300E8F192 /* YabaiIndicatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YabaiIndicatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		506120962779231000E8F192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		506120972779239B00E8F192 /* YabaiIndicatorAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YabaiIndicatorAppDelegate.swift; sourceTree = "<group>"; };
 		5061209A277929A200E8F192 /* SkyLight.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SkyLight.framework; path = ../../../../System/Library/PrivateFrameworks/SkyLight.framework; sourceTree = "<group>"; };
@@ -92,20 +73,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		506120762779212200E8F192 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		506120802779212300E8F192 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -123,8 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				506120682779212000E8F192 /* YabaiIndicator.app */,
-				506120792779212200E8F192 /* YabaiIndicatorTests.xctest */,
-				506120832779212300E8F192 /* YabaiIndicatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,42 +180,6 @@
 			productReference = 506120682779212000E8F192 /* YabaiIndicator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		506120782779212200E8F192 /* YabaiIndicatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 506120902779212300E8F192 /* Build configuration list for PBXNativeTarget "YabaiIndicatorTests" */;
-			buildPhases = (
-				506120752779212200E8F192 /* Sources */,
-				506120762779212200E8F192 /* Frameworks */,
-				506120772779212200E8F192 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5061207B2779212200E8F192 /* PBXTargetDependency */,
-			);
-			name = YabaiIndicatorTests;
-			productName = YabaiIndicatorTests;
-			productReference = 506120792779212200E8F192 /* YabaiIndicatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		506120822779212300E8F192 /* YabaiIndicatorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 506120932779212300E8F192 /* Build configuration list for PBXNativeTarget "YabaiIndicatorUITests" */;
-			buildPhases = (
-				5061207F2779212300E8F192 /* Sources */,
-				506120802779212300E8F192 /* Frameworks */,
-				506120812779212300E8F192 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				506120852779212300E8F192 /* PBXTargetDependency */,
-			);
-			name = YabaiIndicatorUITests;
-			productName = YabaiIndicatorUITests;
-			productReference = 506120832779212300E8F192 /* YabaiIndicatorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -264,14 +193,6 @@
 					506120672779212000E8F192 = {
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
-					};
-					506120782779212200E8F192 = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 506120672779212000E8F192;
-					};
-					506120822779212300E8F192 = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 506120672779212000E8F192;
 					};
 				};
 			};
@@ -293,8 +214,6 @@
 			projectRoot = "";
 			targets = (
 				506120672779212000E8F192 /* YabaiIndicator */,
-				506120782779212200E8F192 /* YabaiIndicatorTests */,
-				506120822779212300E8F192 /* YabaiIndicatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -307,20 +226,6 @@
 				506120732779212200E8F192 /* Preview Assets.xcassets in Resources */,
 				5051A46B2780DC9B00614C85 /* defaults.plist in Resources */,
 				506120702779212200E8F192 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		506120772779212200E8F192 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		506120812779212300E8F192 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,34 +251,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		506120752779212200E8F192 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5061207F2779212300E8F192 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5061207B2779212200E8F192 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 506120672779212000E8F192 /* YabaiIndicator */;
-			targetProxy = 5061207A2779212200E8F192 /* PBXContainerItemProxy */;
-		};
-		506120852779212300E8F192 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 506120672779212000E8F192 /* YabaiIndicator */;
-			targetProxy = 506120842779212300E8F192 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5061208B2779212300E8F192 /* Debug */ = {
@@ -514,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = melon.YabaiIndicator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -552,7 +430,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = melon.YabaiIndicator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -563,74 +441,6 @@
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
-			};
-			name = Release;
-		};
-		506120912779212300E8F192 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YabaiIndicator.app/Contents/MacOS/YabaiIndicator";
-			};
-			name = Debug;
-		};
-		506120922779212300E8F192 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.6;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YabaiIndicator.app/Contents/MacOS/YabaiIndicator";
-			};
-			name = Release;
-		};
-		506120942779212300E8F192 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = YabaiIndicator;
-			};
-			name = Debug;
-		};
-		506120952779212300E8F192 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3UD8QX5G4;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.arsbrevis.YabaiIndicatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = YabaiIndicator;
 			};
 			name = Release;
 		};
@@ -651,24 +461,6 @@
 			buildConfigurations = (
 				5061208E2779212300E8F192 /* Debug */,
 				5061208F2779212300E8F192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		506120902779212300E8F192 /* Build configuration list for PBXNativeTarget "YabaiIndicatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				506120912779212300E8F192 /* Debug */,
-				506120922779212300E8F192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		506120932779212300E8F192 /* Build configuration list for PBXNativeTarget "YabaiIndicatorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				506120942779212300E8F192 /* Debug */,
-				506120952779212300E8F192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

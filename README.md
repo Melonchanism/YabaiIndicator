@@ -6,7 +6,7 @@
     </p>
 
 <img src="docs/simple.png" alt="screenshot">
-<p>Shows a row clickable buttons for all workspaces including fullscreen applications</p>
+<p>Shows a row clickable buttons for all workspaces including fullscreen applications(fullscreen apps not clickable atm)</p>
 
 <img src="docs/window-mode.png" alt="screenshot">
 <p>Alternatively show miniature windows.</p>
@@ -19,7 +19,7 @@
 <p>Fullscreen applications.</p>
 
 <img src="docs/compact.png" alt="screenshot4">
-<p>Compact mode.</p>
+<p>Show only active space(s)</p>
 </div>
 
 ## Requirements
@@ -29,9 +29,10 @@
 
 ## Installation
 
+Requires macOS 12+
 If you don't have yabai, install yabai (version 4.0.2 required) first: [Official installation guide](https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release))
 
-Just download and unzip the latest release of YabaiIndicator from [Releases](https://github.com/xiamaz/YabaiIndicator/releases) and run. Now you should be able to see empty spaces for each desktop and clicking spaces should work.
+I haven't setup builds or builds uploading, so just open the project in Xcode, set your signing team, and make a new bundle identifier and build. Make sure to revolke and regrant accessibility permissions if build is updated.
 
 In order to allow for showing windows and keeping the spaces in sync, when spaces are removed in mission control the following signals need to be added to your `.yabairc`:
 
@@ -57,6 +58,8 @@ echo "refresh" | nc -U /tmp/yabai-indicator.socket
 This sends a refresh command to Yabai Indicator via a unix-domain socket.
 
 ## Comparison to similar applications
+
+[YabaiInidicator (Original)](https://github.com/xiamaz/YabaiIndicator) Requires SIP to be disabled to switch spaces, and has a slightly more outdated codebase (according to me). Opening settings from menu bar doesn't work on macOS 14+. Had a blurry text issue on retina displays.
 
 [SpaceId](https://github.com/dshnkao/SpaceId) has some additonal configurability for presentation and also allows showing all active spaces on all displays. Switching between spaces is not implemented. As of 12/2021 it does not utilize Acessibility API for catching MissionControl invocation. It does not have a dependency on Yabai.
 

@@ -10,9 +10,11 @@ import Socket
 import Combine
 import Defaults
 
-
 class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
-	@Environment(\.openSettings) var openSettings
+	@available(macOS 14.0, *)
+	struct SettingsOpener {
+		@Environment(\.openSettings) static var openSettings
+	}
 	
 	var statusBarItem: NSStatusItem?
 	@Published var spaceModel = SpaceModel()
@@ -85,7 +87,16 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 		NSLog("SocketServer Ended")
 	}
 	
-	@objc func settings() { openSettings() }
+	@objc func settings() {
+		if #available(macOS 14, *) {
+			SettingsOpener.openSettings()
+		} else if #available(macOS 13, *) {
+			NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+		} else {
+			NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
+		}
+		NSApp.activate(ignoringOtherApps: true)
+	}
 	@objc func quit() { NSApp.terminate(self) }
 	
 	func createMenu() -> NSMenu {
