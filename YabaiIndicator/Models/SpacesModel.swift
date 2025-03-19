@@ -22,6 +22,12 @@ struct Space: Identifiable, Equatable {
 	let index: Int // mission control index (for sanitys sake)
 	let yabaiIndex: Int // continuous index (for addresssing)
 	let type: SpaceType // 0 - normal space 4 - fullscreen space // -1 divider
+	enum SpaceType: Int {
+		case divider = -1
+		case standard = 0
+		case fullscreen = 4
+	}
+
 }
 
 struct Display: Identifiable {

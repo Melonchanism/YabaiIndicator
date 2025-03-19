@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import Socket
 import Combine
 import Defaults
+import notify
 
 class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 	@available(macOS 14.0, *)
@@ -21,70 +21,14 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 	
 	let statusBarHeight = 22
 	let itemWidth: CGFloat = 30
-	var receiverQueue = DispatchQueue(label: "yabai-indicator.socket.receiver")
 	
-	@objc func onSpaceChanged(_ notification: Notification) {
-		onSpaceRefresh()
-	}
-	
-	@objc func onDisplayChanged(_ notification: Notification) {
-		onSpaceRefresh()
-	}
-	
-	func refreshData() {
-		// NSLog("Refreshing")
-		receiverQueue.async {
-			self.onSpaceRefresh()
-			self.onWindowRefresh()
-		}
-	}
-	
-	func onSpaceRefresh() {
-		let displays = gNativeClient.queryDisplays()
-		let spaceElems = gNativeClient.querySpaces()
-		
+	@objc func refreshData(_ notification: Notification?) {
+		print("refreshing data")
 		DispatchQueue.main.async {
-			self.spaceModel.displays = displays
-			self.spaceModel.spaces = spaceElems
+			self.spaceModel.displays = gNativeClient.queryDisplays()
+			self.spaceModel.spaces = gNativeClient.querySpaces()
+			self.spaceModel.windows = Defaults[.buttonStyle] == .windows ? gYabaiClient.queryWindows() : []
 		}
-	}
-	
-	func onWindowRefresh() {
-		if Defaults[.buttonStyle] == .windows {
-			let windows = gYabaiClient.queryWindows()
-			DispatchQueue.main.async {
-				self.spaceModel.windows = windows
-			}
-		}
-	}
-	
-	func socketServer() async {
-		do {
-			let socket = try Socket.create(family: .unix, type: .stream, proto: .unix)
-			try socket.listen(on: "/tmp/yabai-indicator.socket")
-			while true {
-				let conn = try socket.acceptClientConnection()
-				let msg = try conn.readString()?.trimmingCharacters(in: .whitespacesAndNewlines)
-				conn.close()
-				// NSLog("Received message: \(msg!).")
-				if msg == "refresh" {
-					self.refreshData()
-				} else if msg == "refresh spaces" {
-					receiverQueue.async {
-						// NSLog("Refreshing on main thread")
-						self.onSpaceRefresh()
-					}
-				} else if msg == "refresh windows" {
-					receiverQueue.async {
-						// NSLog("Refreshing on main thread")
-						self.onWindowRefresh()
-					}
-				}
-			}
-		} catch {
-			NSLog("SocketServer Error: \(error)")
-		}
-		NSLog("SocketServer Ended")
 	}
 	
 	@objc func settings() {
@@ -115,8 +59,11 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 	}
 	
 	func registerObservers() {
-		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.onSpaceChanged(_:)), name: NSWorkspace.activeSpaceDidChangeNotification, object: nil)
-		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.onDisplayChanged(_:)), name: Notification.Name("NSWorkspaceActiveDisplayDidChangeNotification"), object: nil)
+		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.refreshData(_:)), name: NSWorkspace.activeSpaceDidChangeNotification, object: nil)
+		NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(self.refreshData(_:)), name: Notification.Name("NSWorkspaceActiveDisplayDidChangeNotification"), object: nil)
+		var token: Int32 = 0
+		notify_register_dispatch("ExposeEnd", &token, DispatchQueue.main) { _ in self.refreshData(nil) }
+		notify_register_dispatch("WindowChange", &token, DispatchQueue.main) { _ in self.refreshData(nil) }
 	}
 	
 	func refreshButtonStyle() {
@@ -130,7 +77,7 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 		view.setFrameSize(NSSize(width: 0, height: statusBarHeight))
 		
 		statusBarItem?.button?.addSubview(view)
-		refreshData()
+		refreshData(nil)
 	}
 	
 	func applicationDidFinishLaunching(_ notification: Notification) {
@@ -139,13 +86,9 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 			UserDefaults.standard.register(defaults: dict)
 		}
 		
-		
 		let options: NSDictionary = [(kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String): true]
 		AXIsProcessTrustedWithOptions(options)
 		
-		Task {
-			await self.socketServer()
-		}
 		statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		
 		statusBarItem?.menu = createMenu()

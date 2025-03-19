@@ -22,11 +22,9 @@
 		506120A8277A1A8800E8F192 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506120A6277A1A8500E8F192 /* CoreServices.framework */; platformFilter = maccatalyst; };
 		506120AC277A1A9500E8F192 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506120AA277A1A9300E8F192 /* Cocoa.framework */; };
 		506120AF277A7BF800E8F192 /* SpacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506120AE277A7BF800E8F192 /* SpacesModel.swift */; };
-		506120B4277B44B200E8F192 /* Socket in Frameworks */ = {isa = PBXBuildFile; productRef = 506120B3277B44B200E8F192 /* Socket */; };
 		5086FE7F2782006D00E51F61 /* SocketClient.c in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE7E2782006C00E51F61 /* SocketClient.c */; };
 		5086FE842783026C00E51F61 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE832783026C00E51F61 /* ButtonStyle.swift */; };
 		5086FE87278303EE00E51F61 /* NativeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE86278303EE00E51F61 /* NativeClient.swift */; };
-		5086FE892783598E00E51F61 /* SpaceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5086FE882783598E00E51F61 /* SpaceType.swift */; };
 		50DF24C7277BD18700DF1906 /* ImageGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF24C6277BD18700DF1906 /* ImageGenerator.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +53,6 @@
 		5086FE7E2782006C00E51F61 /* SocketClient.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SocketClient.c; sourceTree = "<group>"; };
 		5086FE832783026C00E51F61 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		5086FE86278303EE00E51F61 /* NativeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeClient.swift; sourceTree = "<group>"; };
-		5086FE882783598E00E51F61 /* SpaceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceType.swift; sourceTree = "<group>"; };
 		50DF24C6277BD18700DF1906 /* ImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0358C51D2D7E9F5900C73795 /* Defaults in Frameworks */,
-				506120B4277B44B200E8F192 /* Socket in Frameworks */,
 				506120AC277A1A9500E8F192 /* Cocoa.framework in Frameworks */,
 				506120A4277A1A6F00E8F192 /* CoreGraphics.framework in Frameworks */,
 				506120A8277A1A8800E8F192 /* CoreServices.framework in Frameworks */,
@@ -142,7 +138,6 @@
 			children = (
 				506120AE277A7BF800E8F192 /* SpacesModel.swift */,
 				5086FE832783026C00E51F61 /* ButtonStyle.swift */,
-				5086FE882783598E00E51F61 /* SpaceType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -173,7 +168,6 @@
 			);
 			name = YabaiIndicator;
 			packageProductDependencies = (
-				506120B3277B44B200E8F192 /* Socket */,
 				0358C51C2D7E9F5900C73795 /* Defaults */,
 			);
 			productName = YabaiIndicator;
@@ -206,7 +200,6 @@
 			);
 			mainGroup = 5061205F2779212000E8F192;
 			packageReferences = (
-				506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */,
 				0358C5192D7E9DBB00C73795 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 506120692779212000E8F192 /* Products */;
@@ -239,7 +232,6 @@
 				506120AF277A7BF800E8F192 /* SpacesModel.swift in Sources */,
 				5086FE87278303EE00E51F61 /* NativeClient.swift in Sources */,
 				50DF24C7277BD18700DF1906 /* ImageGenerator.swift in Sources */,
-				5086FE892783598E00E51F61 /* SpaceType.swift in Sources */,
 				506120982779239B00E8F192 /* YabaiIndicatorAppDelegate.swift in Sources */,
 				500F41362780826500C6BC9B /* SettingsView.swift in Sources */,
 				5061206E2779212000E8F192 /* ContentView.swift in Sources */,
@@ -376,7 +368,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YabaiIndicator/YabaiIndicator.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -386,6 +378,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YabaiIndicator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YabaiIndicator;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -414,7 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = YabaiIndicator/YabaiIndicator.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -424,6 +418,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YabaiIndicator/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YabaiIndicator;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,14 +472,6 @@
 				minimumVersion = 9.0.2;
 			};
 		};
-		506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Kitura/BlueSocket.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -491,11 +479,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0358C5192D7E9DBB00C73795 /* XCRemoteSwiftPackageReference "Defaults" */;
 			productName = Defaults;
-		};
-		506120B3277B44B200E8F192 /* Socket */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 506120B2277B44B200E8F192 /* XCRemoteSwiftPackageReference "BlueSocket" */;
-			productName = Socket;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

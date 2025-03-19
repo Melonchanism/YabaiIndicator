@@ -24,8 +24,9 @@
 
 ## Requirements
 
-[Yabai](https://github.com/koekeishiya/yabai) is required to be running for the space switching and keeping spaces information in sync and showing individual windows. In order for switching spaces by clicking to work correctly, you will need to disable SIP.
+[Yabai](https://github.com/koekeishiya/yabai) is required to be running for the space switching and keeping spaces information in sync and showing individual windows.
 
+Keyboard shortcut setup is required: Create 16 spaces, and assign some modifiers for those 1-10 (1-0) and add one extra for 11-16 (1-6) like in the picture below 
 
 ## Installation
 
@@ -37,29 +38,26 @@ I haven't setup builds or builds uploading, so just open the project in Xcode, s
 In order to allow for showing windows and keeping the spaces in sync, when spaces are removed in mission control the following signals need to be added to your `.yabairc`:
 
 ```
-yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=display_added action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=display_removed action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_created action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_destroyed action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_focused action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
-yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=mission_control_enter action='notifyutil -p ExposeStart'
+yabai -m signal --add event=mission_control_exit action='notifyutil -p ExposeEnd'
+
+window_events=("window_created" "window_destroyed" "window_focused" "window_moved" "window_resized" "window_minimized" "window_deminimized")
+for event in "${window_events[@]}"; do
+  yabai -m signal --add event=$event action='notifyutil -p WindowChange'
+done
 ```
 
 If certain keybinds modify the spaces arrangement the following commands needs to be added to keep the indicator in sync:
 
 ```
-echo "refresh" | nc -U /tmp/yabai-indicator.socket
+notifyutil -p WindowChange
 ```
 
 This sends a refresh command to Yabai Indicator via a unix-domain socket.
 
 ## Comparison to similar applications
 
-[YabaiInidicator (Original)](https://github.com/xiamaz/YabaiIndicator) Requires SIP to be disabled to switch spaces, and has a slightly more outdated codebase (according to me). Opening settings from menu bar doesn't work on macOS 14+. Had a blurry text issue on retina displays.
+[YabaiInidicator (Original)](https://github.com/xiamaz/YabaiIndicator) Requires SIP to be disabled to switch spaces, and has a slightly more outdated codebase (according to me). Opening settings from menu bar doesn't work on macOS 14+. Had a blurry text issue on retina displays. Took up more space in menubar due to wider buttons. The buttons also didn't line up with other menu bar items
 
 [SpaceId](https://github.com/dshnkao/SpaceId) has some additonal configurability for presentation and also allows showing all active spaces on all displays. Switching between spaces is not implemented. As of 12/2021 it does not utilize Acessibility API for catching MissionControl invocation. It does not have a dependency on Yabai.
 

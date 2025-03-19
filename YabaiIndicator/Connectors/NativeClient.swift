@@ -44,7 +44,7 @@ class NativeClient {
 					spaceIndex = spaceIncr
 				}
 				
-				spaces.append(Space(spaceid: spaceId, id: spaceUUID, visible: visible, active: active, display: dindex + 1, index: spaceIndex, yabaiIndex: totalSpaces, type: SpaceType(rawValue: spaceType) ?? SpaceType.standard))
+				spaces.append(Space(spaceid: spaceId, id: spaceUUID, visible: visible, active: active, display: dindex + 1, index: spaceIndex, yabaiIndex: totalSpaces, type: Space.SpaceType(rawValue: spaceType)!))
 			}
 		}
 		return spaces
