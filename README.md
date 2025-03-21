@@ -6,7 +6,7 @@
     </p>
 
 <img src="docs/simple.png" alt="screenshot">
-<p>Shows a row clickable buttons for all workspaces including fullscreen applications(fullscreen apps not clickable atm)</p>
+<p>Shows a row clickable buttons for all workspaces including fullscreen applications</p>
 
 <img src="docs/window-mode.png" alt="screenshot">
 <p>Alternatively show miniature windows.</p>
@@ -26,7 +26,8 @@
 
 [Yabai](https://github.com/koekeishiya/yabai) is required to be running for the space switching and keeping spaces information in sync and showing individual windows.
 
-Keyboard shortcut setup is required: Create 16 spaces, and assign some modifiers for those 1-10 (1-0) and add one extra for 11-16 (1-6) like in the picture below 
+Keyboard shortcut setup is required: Create 16 spaces, and assign some modifiers for those 1-10 (1-0) and add one extra for 11-16 (1-6) like in the picture below, and you can then remove the spaces
+<img src="docs/settings.png" />
 
 ## Installation
 

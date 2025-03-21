@@ -114,9 +114,10 @@ struct ContentView: View {
 					event1.post(tap: .cghidEventTap);
 					CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: false)!.post(tap: .cghidEventTap)
 				} else if space.type == .fullscreen {
-					gYabaiClient.yabaiSocketCall("-m", "window", "--focus", "\(spaceModel.windows.first { $0.spaceIndex == space.yabaiIndex }!.id)")
+					// slower method but works for fullscreen
+					gYabaiClient.yabaiSocketCall("-m", "window", "--focus", "\(spaceModel.windows.first { $0.spaceIndex == space.yabaiIndex }?.id ?? 0)")
 				} else {
-					print("How did you even manage to click the divider")
+//					print("How did you even manage to click the divider")
 				}
 			}
 		}

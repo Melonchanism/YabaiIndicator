@@ -23,11 +23,11 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 	let itemWidth: CGFloat = 30
 	
 	@objc func refreshData(_ notification: Notification?) {
-		print("refreshing data")
+//		print("refreshing data")
 		DispatchQueue.main.async {
 			self.spaceModel.displays = gNativeClient.queryDisplays()
 			self.spaceModel.spaces = gNativeClient.querySpaces()
-			self.spaceModel.windows = Defaults[.buttonStyle] == .windows ? gYabaiClient.queryWindows() : []
+			self.spaceModel.windows = gYabaiClient.queryWindows()
 		}
 	}
 	
