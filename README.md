@@ -48,13 +48,26 @@ for event in "${window_events[@]}"; do
 done
 ```
 
-If certain keybinds modify the spaces arrangement the following commands needs to be added to keep the indicator in sync:
-
-```
+If some other program modifies the layout, add the following to what it runs
+```bash
 notifyutil -p WindowChange
 ```
 
-This sends a refresh command to Yabai Indicator via a unix-domain socket.
+This sends a refresh command to Yabai Indicator via notifyd.
+
+## Extra features
+My hammerspoon script communicates with this app to allow fast space switching
+```lua
+local ctrl = { "ctrl" }
+hotkey.bind(ctrl, "left", function() hs.execute("notifyutil -p LastSpace") end)
+hotkey.bind(ctrl, "left", function() hs.execute("notifyutil -p NextSpace") end)
+```
+Or it could be for skhd
+```bash
+ctrl - left : notifyutil -p LastSpace
+ctrl - right : notifyutil -p NextSpace
+```
+
 
 ## Comparison to similar applications
 

@@ -103,6 +103,18 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 		var token: Int32 = 0
 		notify_register_dispatch("ExposeEnd", &token, DispatchQueue.main) { _ in self.refreshData(nil) }
 		notify_register_dispatch("WindowChange", &token, DispatchQueue.main) { _ in self.refreshData(nil) }
+		notify_register_dispatch("NextSpace", &token, DispatchQueue.global(qos: .userInteractive)) { _ in
+			let currentSpaceIDX = self.spaceModel.spaces.firstIndex(where: { $0.active == true })
+			if currentSpaceIDX != nil && currentSpaceIDX! < self.spaceModel.spaces.count - 1 {
+				self.switchSpace(self.spaceModel.spaces[currentSpaceIDX! + 1])
+			}
+		}
+		notify_register_dispatch("LastSpace", &token, DispatchQueue.global(qos: .userInteractive)) { _ in
+			let currentSpaceIDX = self.spaceModel.spaces.firstIndex(where: { $0.active == true })
+			if currentSpaceIDX != nil && currentSpaceIDX! > 0 {
+				self.switchSpace(self.spaceModel.spaces[currentSpaceIDX! - 1])
+			}
+		}
 	}
 	
 	func initializeMenuItem() {
