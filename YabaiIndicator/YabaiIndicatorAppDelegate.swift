@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import Defaults
 import notify
+import Carbon.HIToolbox
 
 class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 	@available(macOS 14.0, *)
@@ -21,6 +22,44 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 	
 	let statusBarHeight = 22
 	let itemWidth: CGFloat = 30
+	
+	func switchSpace(_ space: Space) {
+		if !space.active && space.yabaiIndex > 0 {
+			Task {
+				if space.type == .standard {
+					let keyCode = switch space.index {
+						case 1: kVK_ANSI_1
+						case 2: kVK_ANSI_2
+						case 3: kVK_ANSI_3
+						case 4: kVK_ANSI_4
+						case 5: kVK_ANSI_5
+						case 6: kVK_ANSI_6
+						case 7: kVK_ANSI_7
+						case 8: kVK_ANSI_8
+						case 9: kVK_ANSI_9
+						case 10: kVK_ANSI_0
+						case 11: kVK_ANSI_1
+						case 12: kVK_ANSI_2
+						case 13: kVK_ANSI_3
+						case 14: kVK_ANSI_4
+						case 15: kVK_ANSI_5
+						case 16: kVK_ANSI_6
+						default: kVK_Function
+					}
+					let event1 = CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: true)!
+					if space.yabaiIndex < 11 { event1.flags = [.maskControl, .maskAlternate] }
+					else { event1.flags = [.maskControl, .maskAlternate, .maskShift] }
+					event1.post(tap: .cghidEventTap);
+					CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: false)!.post(tap: .cghidEventTap)
+				} else if space.type == .fullscreen {
+					// slower method but works for fullscreen
+					gYabaiClient.yabaiSocketCall("-m", "window", "--focus", "\(spaceModel.windows.first { $0.spaceIndex == space.yabaiIndex }?.id ?? 0)")
+				} else {
+					//					print("How did you even manage to click the divider")
+				}
+			}
+		}
+	}
 	
 	@objc func refreshData(_ notification: Notification?) {
 //		print("refreshing data")
@@ -66,7 +105,7 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 		notify_register_dispatch("WindowChange", &token, DispatchQueue.main) { _ in self.refreshData(nil) }
 	}
 	
-	func refreshButtonStyle() {
+	func initializeMenuItem() {
 		for subView in statusBarItem?.button?.subviews ?? [] {
 			subView.removeFromSuperview()
 		}
@@ -75,8 +114,20 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 			.environmentObject(spaceModel)
 		)
 		view.setFrameSize(NSSize(width: 0, height: statusBarHeight))
-		
 		statusBarItem?.button?.addSubview(view)
+		
+		let statusBarMenu = NSMenu()
+		statusBarMenu.addItem(
+			withTitle: "Preferences",
+			action: #selector(settings),
+			keyEquivalent: ",")
+		statusBarMenu.addItem(NSMenuItem.separator())
+		statusBarMenu.addItem(
+			withTitle: "Quit",
+			action: #selector(quit),
+			keyEquivalent: "q")
+		statusBarItem?.menu = statusBarMenu
+		
 		refreshData(nil)
 	}
 	
@@ -91,9 +142,7 @@ class YabaiIndicatorAppDelegate: NSObject, NSApplicationDelegate, ObservableObje
 		
 		statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 		
-		statusBarItem?.menu = createMenu()
-		
-		refreshButtonStyle()
+		initializeMenuItem()
 		registerObservers()
 	}
 }

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Carbon.HIToolbox
 import Defaults
 
 struct ContentView: View {
@@ -36,11 +35,9 @@ struct ContentView: View {
 	var body: some View {
 		HStack (spacing: 4) {
 			ForEach(generateSpaces()) { space in
-				Button(action: {
-					switchSpace(space)
-				}) {
+				Group {
 					if space.type == .divider {
-						Divider().background(Color(.systemGray)).frame(height: 14)
+						Divider().background(.secondary).frame(height: 14)
 					} else {
 						ZStack {
 							if #available(macOS 14, *) {
@@ -53,8 +50,9 @@ struct ContentView: View {
 									.cornerRadius(3)
 							}
 							if space.type != .fullscreen {
+								// Use spaces around text to fix hitbox
 								if buttonStyle == .numeric {
-									Text("\(space.index)")
+									Text(" \(space.index) ")
 										.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
 								} else {
 									Image(nsImage: generateImage(windows: spaceModel.windows.filter { $0.spaceIndex == space.yabaiIndex }, display: spaceModel.displays[space.display-1]))
@@ -63,7 +61,7 @@ struct ContentView: View {
 										.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
 								}
 							} else {
-								Text("F")
+								Text(" F ")
 									.blendMode(space.active || space.visible ? .destinationOut : .destinationOver)
 							}
 						}
@@ -71,6 +69,7 @@ struct ContentView: View {
 						.padding(.top, -1)
 					}
 				}
+				.onTapGesture { appDelegate.switchSpace(space) }
 				.buttonStyle(.borderless)
 			}
 		}
@@ -85,42 +84,4 @@ struct ContentView: View {
 			}
 		}
 	}
-	func switchSpace(_ space: Space) {
-		if !space.active && space.yabaiIndex > 0 {
-			Task {
-				if space.type == .standard {
-					let keyCode = switch space.index {
-						case 1: kVK_ANSI_1
-						case 2: kVK_ANSI_2
-						case 3: kVK_ANSI_3
-						case 4: kVK_ANSI_4
-						case 5: kVK_ANSI_5
-						case 6: kVK_ANSI_6
-						case 7: kVK_ANSI_7
-						case 8: kVK_ANSI_8
-						case 9: kVK_ANSI_9
-						case 10: kVK_ANSI_0
-						case 11: kVK_ANSI_1
-						case 12: kVK_ANSI_2
-						case 13: kVK_ANSI_3
-						case 14: kVK_ANSI_4
-						case 15: kVK_ANSI_5
-						case 16: kVK_ANSI_6
-						default: kVK_Function
-					}
-					let event1 = CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: true)!
-					if space.yabaiIndex < 11 { event1.flags = [.maskControl, .maskAlternate] }
-					else { event1.flags = [.maskControl, .maskAlternate, .maskShift] }
-					event1.post(tap: .cghidEventTap);
-					CGEvent(keyboardEventSource: nil, virtualKey: CGKeyCode(keyCode), keyDown: false)!.post(tap: .cghidEventTap)
-				} else if space.type == .fullscreen {
-					// slower method but works for fullscreen
-					gYabaiClient.yabaiSocketCall("-m", "window", "--focus", "\(spaceModel.windows.first { $0.spaceIndex == space.yabaiIndex }?.id ?? 0)")
-				} else {
-//					print("How did you even manage to click the divider")
-				}
-			}
-		}
-	}
-
 }
