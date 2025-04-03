@@ -15,11 +15,11 @@
 <br>
 
 
-<img src="docs/multidisplay.png" alt="screenshot">
+<img src="docs/multidisplay.png" style="width: 830px;" alt="screenshot">
 <p>Also supports multiple displays (with separate spaces).</p>
 <br>
 
-<img src="docs/compact.png" alt="screenshot">
+<img src="docs/compact.png" style="width: 830px;" alt="screenshot">
 <p>Show only active space(s)</p>
 
 </div>
