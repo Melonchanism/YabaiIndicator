@@ -68,7 +68,7 @@ ctrl - right : notifyutil -p NextSpace
 
 ## Comparison to similar applications
 
- [YabaiInidicator (Original)](https://github.com/xiamaz/YabaiIndicator) Requires SIP to be disabled to switch spaces, but also does it with no animation. A little bit outdated. Design difference. Supports slightly older os versions.
+ [YabaiInidicator (Original)](https://github.com/xiamaz/YabaiIndicator) Requires SIP to be disabled to switch spaces. A little bit outdated. Design difference. Supports slightly older os versions.
 
  [SpaceId](https://github.com/dshnkao/SpaceId) has some additonal configurability for presentation and also allows showing all active spaces on all displays. Switching between spaces is not implemented. As of 12/2021 it does not utilize Acessibility API for catching MissionControl invocation. It does not have a dependency on Yabai.
 
@@ -78,4 +78,4 @@ ctrl - right : notifyutil -p NextSpace
 - Random crashes
 
 ## To-do
-- Reimplement space switching with `yabai -m space --focus` 
+- ~~Reimplement space switching with `yabai -m space --focus`~~   **yabai-sa also patches the space switch animation for the method used here**
